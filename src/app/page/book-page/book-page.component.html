@@ -1,1 +1,24 @@
-<p>book-page works!</p>
+<div class="card mt-5">
+    <div class="card-header">
+      Books
+    </div>
+    <div class="card-body bg-dark">
+        <table class="table text-white">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Version</th>
+                <th scope="col">Author</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr  *ngFor="let b of books; let i = index">
+                <th scope="row">{{ i + 1}}</th>
+                <td>{{b.title}}</td>
+                <td>{{b.version}}</td>
+                <td>{{b.author}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
