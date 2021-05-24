@@ -1,0 +1,42 @@
+<h1>LOGIN </h1>
+<br>
+
+<div class="row">
+    <div class="col">
+        <div class="alert alert-danger" *ngIf="loginError">
+          
+          <span *ngIf="loginError.error !== undefined && loginError.error.error !== undefined">
+            {{ loginError.error.error }}
+          </span>
+          
+            Si è verificato un errore di autenticazione. Controllare i log.
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <h2> To access the bookPage, Please login. </h2>
+        <br>
+        <form #loginForm="ngForm" (ngSubmit)="submit()">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" aria-describedby="usernameHelp"
+                    placeholder="Enter username" name="username" [(ngModel)]="login.username" #email="ngModel" required>
+                <div class="alert alert-danger" *ngIf="!email.pristine && !email.valid">
+                    Il campo è richiesto
+                </div>
+                </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password"
+                    name="password" [(ngModel)]="login.password" #password="ngModel" required minlength="5" maxlength="10">
+                    <div class="alert alert-danger" *ngIf="!password.pristine && !password.valid">
+                        Il campo è richiesto e deve avere una lunghezza di 5-10 caratteri.
+                    </div>    
+                </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
+        </form>
+    </div>
+</div>
+
